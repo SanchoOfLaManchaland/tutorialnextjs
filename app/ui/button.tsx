@@ -1,11 +1,14 @@
 import clsx from 'clsx';
+import { deleteInvoice } from '@/app/lib/actions';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
 export function Button({ children, className, ...rest }: ButtonProps) {
+    const deleteInvoiceWithId = deleteInvoice.bind(null, id);
   return (
+        <form action={deleteInvoiceWithId}>
     <button
       {...rest}
       className={clsx(
@@ -15,5 +18,6 @@ export function Button({ children, className, ...rest }: ButtonProps) {
     >
       {children}
     </button>
+     </form>
   );
 }
